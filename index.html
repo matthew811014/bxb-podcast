@@ -15,20 +15,19 @@
         .header {
             background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
             color: white;
-            padding: 40px 20px 50px; /* 底部多留一點空間給圓弧 */
+            padding: 40px 20px 50px;
             text-align: center;
             position: relative;
         }
         
-        /* LOGO 的樣式設定 */
         .logo-img {
-            max-width: 180px;      /* 限制最大寬度，避免太佔版面 */
-            height: auto;          /* 高度自動調整 */
-            background: white;     /* 白色背景 */
-            padding: 12px 20px;    /* 留白邊距 */
-            border-radius: 8px;    /* 圓角 */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* 讓Logo浮起來的陰影 */
-            margin-bottom: 20px;   /* Logo跟標題的距離 */
+            max-width: 180px;
+            height: auto;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
             display: inline-block;
         }
 
@@ -37,7 +36,7 @@
 
         .container {
             max-width: 600px;
-            margin: -30px auto 0; /* 往上推，蓋住 header */
+            margin: -30px auto 0;
             background: white;
             border-radius: 20px 20px 0 0;
             box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
@@ -45,6 +44,18 @@
             min-height: 80vh;
             position: relative;
             z-index: 10;
+        }
+
+        /* --- 新增：分類標題樣式 --- */
+        .category-title {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            padding: 15px 20px;
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            border-left: 5px solid #3498db; /* 左邊的藍色裝飾線 */
+            border-bottom: 1px solid #eee;
         }
 
         .playlist { list-style: none; padding: 0; margin: 0; }
@@ -79,7 +90,6 @@
         .desc { color: #777; font-size: 13px; margin: 0; line-height: 1.5; }
         .duration { font-size: 12px; color: #aaa; margin-top: 8px; display: block; }
 
-        /* 底部固定播放器 */
         .fixed-player {
             position: fixed;
             bottom: 0; left: 0; right: 0;
@@ -121,6 +131,8 @@
 </div>
 
 <div class="container">
+    
+    <div class="category-title">廣播系統 (PA System)</div>
     <ul class="playlist">
         
         <li class="episode" onclick="playAudio('ep01(ch).m4a', 'SPA-1050廣播進化為智慧建築神經節點', this)">
@@ -139,6 +151,26 @@
             </div>
         </li>
 
+        <li class="episode" onclick="playAudio('ep03ch.m4a', 'WMP-3100數位定址廣播_如何超越學校大聲公', this)">
+            <div class="play-icon">▶</div>
+            <div class="info">
+                <span class="title">WMP-3100數位定址廣播_如何超越學校大聲公</span>
+                <p class="desc">引領未來的聲音－WMP-3100系列數位定址廣播系統。</p>
+            </div>
+        </li>
+
+        <li class="episode" onclick="playAudio('ep03(en).m4a', 'Pillars_of_the_WMP-3100_Building_Brain', this)">
+            <div class="play-icon">▶</div>
+            <div class="info">
+                <span class="title">Pillars_of_the_WMP-3100_Building_Brain</span>
+                <p class="desc">WMP-3100 Digital Addressable PA System.</p>
+            </div>
+        </li>
+    </ul>
+
+    <div class="category-title">會議系統 (Conference)</div>
+    <ul class="playlist">
+        
         <li class="episode" onclick="playAudio('ep02(ch).m4a', 'BXB 用ICP-5200打造的 IP 影音大腦', this)">
             <div class="play-icon">▶</div>
             <div class="info">
@@ -151,27 +183,12 @@
             <div class="play-icon">▶</div>
             <div class="info">
                 <span class="title">BXB ICP-5200 The Building’s Digital Brain</span>
-                <p class="desc">Efficient Information Transmission, Flexible Control of Audiovisual Spaces.</p>
+                <p class="desc">Efficient Information Transmission.</p>
             </div>
         </li>
+        
+        </ul>
 
-        <li class="episode" onclick="playAudio('ep03(ch).m4a', 'WMP-3100數位定址廣播，如何超越學校大聲公?', this)">
-            <div class="play-icon">▶</div>
-            <div class="info">
-                <span class="title">WMP-3100數位定址廣播，如何超越學校大聲公?</span>
-                <p class="desc">引領未來的聲音－WMP-3100系列數位定址廣播系統，您全方位的廣播解決方案。</p>
-            </div>
-        </li>
-
-        <li class="episode" onclick="playAudio('ep03(en).m4a', 'Pillars of the WMP-3100 Building Brain', this)">
-            <div class="play-icon">▶</div>
-            <div class="info">
-                <span class="title">Pillars of the WMP-3100 Building Brain</span>
-                <p class="desc">WMP-3100 Digital Addressable PA System: your comprehensive solution for broadcasting needs.</p>
-            </div>
-        </li>
-
-    </ul>
 </div>
 
 <div class="fixed-player">
@@ -186,13 +203,9 @@
     var nowPlayingText = document.getElementById('nowPlaying');
 
     function playAudio(fileName, title, element) {
-        // 1. 設定音源
         player.src = fileName;
-        
-        // 2. 更新標題文字
         nowPlayingText.innerText = "正在播放: " + title;
-
-        // 3. 處理列表樣式
+        
         var allEpisodes = document.querySelectorAll('.episode');
         allEpisodes.forEach(ep => {
             ep.classList.remove('playing');
@@ -201,8 +214,6 @@
         
         element.classList.add('playing');
         element.querySelector('.play-icon').innerText = "lll"; 
-
-        // 4. 開始播放
         player.play();
     }
 </script>
