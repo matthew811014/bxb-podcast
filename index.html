@@ -15,7 +15,7 @@
         .header {
             background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
             color: white;
-            padding: 40px 20px 60px; /* header 加高一點 */
+            padding: 40px 20px 60px;
             text-align: center;
         }
         
@@ -34,26 +34,23 @@
         .header p { margin: 10px 0 0; opacity: 0.9; font-size: 14px; }
 
         .container {
-            max-width: 1000px; /* 寬度加寬容納兩欄 */
+            max-width: 1000px;
             margin: -40px auto 0;
             padding: 0 15px;
             z-index: 10;
             position: relative;
         }
 
-        /* --- 左右排版控制器 (Grid) --- */
+        /* --- Grid 左右排版 --- */
         .grid-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* 1:1 等寬兩欄 */
-            gap: 20px; /* 兩欄中間的間距 */
-            align-items: start; /* 對齊頂部 */
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: start;
         }
 
-        /* --- 手機版適配 (螢幕小於 768px 時變回單欄) --- */
         @media (max-width: 768px) {
-            .grid-layout {
-                grid-template-columns: 1fr; /* 強制變回一欄 */
-            }
+            .grid-layout { grid-template-columns: 1fr; }
         }
 
         /* --- 卡片樣式 --- */
@@ -62,6 +59,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            padding-bottom: 10px;
         }
 
         .category-title {
@@ -71,8 +69,20 @@
             margin: 0;
             font-size: 18px;
             font-weight: 700;
-            border-bottom: 2px solid #3498db; /* 底部藍線 */
+            border-bottom: 2px solid #3498db;
             text-align: center;
+        }
+
+        /* --- 產品型號小標籤樣式 --- */
+        .product-label {
+            background-color: #e9ecef;
+            color: #495057;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 5px 12px;
+            margin: 15px 15px 5px; 
+            border-radius: 4px;
+            display: inline-block;
         }
 
         .playlist { list-style: none; padding: 0; margin: 0; }
@@ -90,13 +100,15 @@
         .episode.playing { background-color: #eef7ff; }
         .episode.playing .title { color: #3498db; }
 
-        /* 尚無內容的佔位樣式 */
         .empty-placeholder {
-            padding: 40px 20px;
+            padding: 20px;
             text-align: center;
             color: #aaa;
+            font-size: 13px;
             font-style: italic;
+            border-bottom: 1px solid #f0f0f0; 
         }
+        .empty-placeholder:last-child { border-bottom: none; }
 
         .play-icon {
             width: 32px; height: 32px;
@@ -162,32 +174,16 @@
 
         <div class="category-column">
             <div class="category-title">廣播系統 (PA System)</div>
+            
+            <div class="product-label">SPA-1050 系列</div>
             <ul class="playlist">
-                
-                <li class="episode" onclick="playAudio('ep00(ch).m4a', 'MT-2整合地震預警的智慧廣播', this)">
-                    <div class="play-icon">▶</div>
-                    <div class="info">
-                        <span class="title">MT-2整合地震預警的智慧廣播</span>
-                        <p class="desc">可定時播放音樂，用於日常作息的地震速報系統。</p>
-                    </div>
-                </li>
-
-                <li class="episode" onclick="playAudio('ep00(en).m4a', 'Replacing Industrial Bells With Smart Audio-MT-2', this)">
-                    <div class="play-icon">▶</div>
-                    <div class="info">
-                        <span class="title">Replacing Industrial Bells With Smart Audio-MT-2</span>
-                        <p class="desc">Multi-functional Daily Usage & Intuitive Remote Control.</p>
-                    </div>
-                </li>
-
                 <li class="episode" onclick="playAudio('ep01(ch).m4a', 'SPA-1050廣播進化為智慧建築神經節點', this)">
                     <div class="play-icon">▶</div>
                     <div class="info">
                         <span class="title">SPA-1050廣播進化為智慧建築神經節點</span>
-                        <p class="desc">彈性分區，佈線極簡化，網頁圖控。</p>
+                        <p class="desc">彈性分區，佈線極簡化。</p>
                     </div>
                 </li>
-
                 <li class="episode" onclick="playAudio('ep01(en).m4a', 'BXB SPA-1050 Smart Public Address System', this)">
                     <div class="play-icon">▶</div>
                     <div class="info">
@@ -195,7 +191,38 @@
                         <p class="desc">Flexible Zoning, Minimalist Cabling.</p>
                     </div>
                 </li>
+            </ul>
 
+            <div class="product-label">WMP-3100 系列</div>
+            <ul class="playlist">
+                <li class="episode" onclick="playAudio('ep03ch.m4a', 'WMP-3100數位定址廣播', this)">
+                    <div class="play-icon">▶</div>
+                    <div class="info">
+                        <span class="title">WMP-3100數位定址廣播</span>
+                        <p class="desc">如何超越學校大聲公。</p>
+                    </div>
+                </li>
+                <li class="episode" onclick="playAudio('ep03(en).m4a', 'WMP-3100 Building Brain', this)">
+                    <div class="play-icon">▶</div>
+                    <div class="info">
+                        <span class="title">Pillars of the WMP-3100 Building Brain</span>
+                        <p class="desc">Digital Addressable PA System.</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="product-label">MT-2 系列</div>
+            <div class="empty-placeholder">
+                內容籌備中 (Coming Soon)
+            </div>
+
+        </div>
+
+        <div class="category-column">
+            <div class="category-title">會議系統 (Conference)</div>
+            
+            <div class="product-label">ICP-5200 系列</div>
+            <ul class="playlist">
                 <li class="episode" onclick="playAudio('ep02(ch).m4a', 'BXB 用ICP-5200打造的 IP 影音大腦', this)">
                     <div class="play-icon">▶</div>
                     <div class="info">
@@ -203,7 +230,6 @@
                         <p class="desc">高效資訊傳達，靈活控制影音場域.</p>
                     </div>
                 </li>
-
                 <li class="episode" onclick="playAudio('ep02(en).m4a', 'BXB ICP-5200 The Building’s Digital Brain', this)">
                     <div class="play-icon">▶</div>
                     <div class="info">
@@ -211,36 +237,45 @@
                         <p class="desc">Efficient Information Transmission.</p>
                     </div>
                 </li>
-
-                <li class="episode" onclick="playAudio('ep03(ch).m4a', 'WMP-3100數位定址廣播，如何超越學校大聲公?', this)">
-                    <div class="play-icon">▶</div>
-                    <div class="info">
-                        <span class="title">WMP-3100數位定址廣播，如何超越學校大聲公?</span>
-                        <p class="desc">引領未來的聲音－WMP-3100系列數位定址廣播系統，您全方位的廣播解決方案。</p>
-                    </div>
-                </li>
-
-                <li class="episode" onclick="playAudio('ep03(en).m4a', 'WMP-3100 Building Brain', this)">
-                    <div class="play-icon">▶</div>
-                    <div class="info">
-                        <span class="title">Pillars of the WMP-3100 Building Brain</span>
-                        <p class="desc">WMP-3100 Digital Addressable PA System: your comprehensive solution for broadcasting needs.</p>
-                    </div>
-                </li>
-
             </ul>
-        </div>
 
-        <div class="category-column">
-            <div class="category-title">會議系統 (Conference)</div>
+            <div class="product-label">新會議系統系列 (請修改型號)</div>
             <ul class="playlist">
                 
-                <div class="empty-placeholder">
-                    內容籌備中，敬請期待...<br>
-                    (Coming Soon)
-                </div>
+                <li class="episode" onclick="playAudio('meet01ch.m4a', 'BXB FCS-6350_打造千人會議控場大腦', this)">
+                    <div class="play-icon">▶</div>
+                    <div class="info">
+                        <span class="title">BXB FCS-6350_打造千人會議控場大腦</span>
+                        <p class="desc">全功能、高整合、行動管理，展現國際級企業格局.</p>
+                    </div>
+                </li>
+                
+                <li class="episode" onclick="playAudio('meet01en.m4a', 'How BXB FCS-6300 Solves Meeting Chaos', this)">
+                    <div class="play-icon">▶</div>
+                    <div class="info">
+                        <span class="title">How BXB FCS-6300 Solves Meeting Chaos</span>
+                        <p class="desc">Full-function Conference System.</p>
+                    </div>
+                </li>
+
+                <li class="episode" onclick="playAudio('meet02ch.m4a', '拒絕無效會議！BXB FCS-6350-S 如何扮演團隊的「外掛大腦」，讓決策有據可循？', this)">
+                    <div class="play-icon">▶</div>
+                    <div class="info">
+                        <span class="title">拒絕無效會議！BXB FCS-6350-S 如何扮演團隊的「外掛大腦」，讓決策有據可循？</span>
+                        <p class="desc">掌握會議每一刻，實現高效溝通.</p>
+                    </div>
+                </li>
+                
+                <li class="episode" onclick="playAudio('meet02en.m4a', 'BXB FCS-6350-S Solves The Meeting Black Hole', this)">
+                    <div class="play-icon">▶</div>
+                    <div class="info">
+                        <span class="title">BXB FCS-6350-S Solves The Meeting Black Hole</span>
+                        <p class="desc">All-round, High-integration, Mobile-management, Presenting as an International Corporate.</p>
+                    </div>
+                </li>
 
             </ul>
+
         </div>
 
     </div>
